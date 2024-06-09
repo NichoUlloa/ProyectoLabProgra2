@@ -41,6 +41,12 @@ public class MarcaDAO {
         }
     }
 
+    // metodo getNombreMarca
+    public static String getNombreMarca(DSLContext query, int idMarca) {
+        Result resultados = query.select().from(DSL.table("Marca")).where(DSL.field("idMarca").eq(idMarca)).fetch();
+        return (String) resultados.getValue(0, "nombreMarca");
+    }
+
     private static String[][] exportarDatos(Result resultados) {
         String[][] datosResultado = new String[resultados.size()][2];
         for (int registro = 0; registro < resultados.size(); registro++) {

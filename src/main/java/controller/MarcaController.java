@@ -22,10 +22,20 @@ public class MarcaController {
         }
     }
 
+    // metodo getIDMarcas
     public static Object[] getIDMarcas() throws ClassNotFoundException {
         DSLContext query = DBGenerator.conectarBD(nombreDataBase);
         Object[] marcas = MarcaDAO.getIDMarcas(query);
         DBConnector.closeConnection();
         return marcas;
     }
+
+    // metodo getNombreMarca
+    public static String getNombreMarca(int idMarca) throws ClassNotFoundException {
+        DSLContext query = DBGenerator.conectarBD(nombreDataBase);
+        String nombreMarca = MarcaDAO.getNombreMarca(query, idMarca);
+        DBConnector.closeConnection();
+        return nombreMarca;
+    }
+
 }

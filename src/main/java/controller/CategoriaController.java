@@ -22,10 +22,19 @@ public class CategoriaController {
         }
     }
 
+    // metodo getIDCategorias
     public static Object[] getIDCategorias() throws ClassNotFoundException {
         DSLContext query = DBGenerator.conectarBD(nombreDataBase);
         Object[] categorias = CategoriaDAO.getIDCategorias(query);
         DBConnector.closeConnection();
         return categorias;
+    }
+
+    // metodo getNombreCategoria
+    public static String getNombreCategoria(int idCategoria) throws ClassNotFoundException {
+        DSLContext query = DBGenerator.conectarBD(nombreDataBase);
+        String nombreCategoria = CategoriaDAO.getNombreCategoria(query, idCategoria);
+        DBConnector.closeConnection();
+        return nombreCategoria;
     }
 }
