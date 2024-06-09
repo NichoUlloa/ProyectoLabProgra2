@@ -42,9 +42,14 @@ public class MarcaDAO {
     }
 
     // metodo getNombreMarca
-    public static String getNombreMarca(DSLContext query, int idMarca) {
-        Result resultados = query.select().from(DSL.table("Marca")).where(DSL.field("idMarca").eq(idMarca)).fetch();
-        return (String) resultados.getValue(0, "nombreMarca");
+    public static Object[] getNombreMarca(DSLContext query) {
+        Table<?> marca = DSL.table("Marca");
+        Result resultados = query.select(marca.field("nombreMarca")).from(marca).fetch();
+        if (resultados.size() == 0) {
+            return new String[]{"Error no existen marcas"};
+        } else {
+            return resultados.getValues("nombreMarca").toArray();
+        }
     }
 
     private static String[][] exportarDatos(Result resultados) {

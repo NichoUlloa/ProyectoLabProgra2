@@ -31,10 +31,10 @@ public class CategoriaController {
     }
 
     // metodo getNombreCategoria
-    public static String getNombreCategoria(int idCategoria) throws ClassNotFoundException {
+    public static Object[] getNombreCategoria() throws ClassNotFoundException {
         DSLContext query = DBGenerator.conectarBD(nombreDataBase);
-        String nombreCategoria = CategoriaDAO.getNombreCategoria(query, idCategoria);
+        Object[] categorias = CategoriaDAO.getNombreCategoria(query);
         DBConnector.closeConnection();
-        return nombreCategoria;
+        return categorias;
     }
 }

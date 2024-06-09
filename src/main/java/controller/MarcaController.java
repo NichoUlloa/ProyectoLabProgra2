@@ -31,11 +31,11 @@ public class MarcaController {
     }
 
     // metodo getNombreMarca
-    public static String getNombreMarca(int idMarca) throws ClassNotFoundException {
+    public static Object[] getNombreMarca() throws ClassNotFoundException {
         DSLContext query = DBGenerator.conectarBD(nombreDataBase);
-        String nombreMarca = MarcaDAO.getNombreMarca(query, idMarca);
+        Object[] marcas = MarcaDAO.getNombreMarca(query);
         DBConnector.closeConnection();
-        return nombreMarca;
+        return marcas;
     }
 
 }

@@ -36,9 +36,14 @@ public class CategoriaDAO {
     }
 
     // metodo getNombreCategoria
-    public static String getNombreCategoria(DSLContext query, int idCategoria) {
-        Result resultados = query.select().from(DSL.table("Categoria")).where(DSL.field("idCategoria").eq(idCategoria)).fetch();
-        return (String) resultados.getValue(0, "nombreCategoria");
+    public static Object[] getNombreCategoria(DSLContext query) {
+        Table<?> categoria = DSL.table("Categoria");
+        Result resultados = query.select(categoria.field("nombreCategoria")).from(categoria).fetch();
+        if (resultados.size() == 0) {
+            return new String[]{"Error no existen categorias"};
+        } else {
+            return resultados.getValues("nombreCategoria").toArray();
+        }
     }
 
     private static String[][] exportarDatos(Result resultados) {

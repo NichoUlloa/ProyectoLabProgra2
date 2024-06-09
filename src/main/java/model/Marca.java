@@ -4,8 +4,6 @@ public class Marca {
     private int idMarca;
     private String nombreMarca;
 
-    public Marca() {
-    }
 
     public Marca(String nombreMarca) {
         this.nombreMarca = nombreMarca;

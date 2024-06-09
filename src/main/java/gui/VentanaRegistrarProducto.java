@@ -1,32 +1,40 @@
 package gui;
 
-import controller.ProductoController;
 import controller.CategoriaController;
 import controller.MarcaController;
 import model.Categoria;
 import model.Marca;
+import model.Producto;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 public class VentanaRegistrarProducto extends Ventana {
-    public static void main(String[] args) throws ClassNotFoundException {
-        VentanaRegistrarProducto ventana = new VentanaRegistrarProducto();
-    }
-
-    // Componentes de la ventana
     private JLabel textoMenu, textoID, textoNombre, textoMarca, textoCategoria, textoPrecio, textoStock;
     private JTextField campoID, campoNombre, campoPrecio, campoStock;
-    private JComboBox campoMarca;
-    private JComboBox campoCategoria;
+    private JComboBox<Marca> campoMarca;
+    private JComboBox<Categoria> campoCategoria;
     private JButton botonRegistrar, botonCancelar;
+    private List<Marca> marcas;
+    private List<Categoria> categorias;
 
-    public VentanaRegistrarProducto() throws ClassNotFoundException{
-        super("Registrar Producto", 500, 600); // Ajuste de tamaño para acomodar el nuevo campo
+    public VentanaRegistrarProducto() {
+        super("Registrar Producto", 500, 600);
+        try {
+            cargarMarcasYCategorias();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         generarElementosVentana();
     }
 
-    private void generarElementosVentana() throws ClassNotFoundException{
+    private void cargarMarcasYCategorias() throws ClassNotFoundException {
+        marcas = MarcaController.obtenerMarcas();
+        categorias = CategoriaController.obtenerCategorias();
+    }
+
+    private void generarElementosVentana() {
         generarMensajeMenu();
         generarCampoID();
         generarCampoNombre();
@@ -71,17 +79,24 @@ public class VentanaRegistrarProducto extends Ventana {
         this.add(campoStock);
     }
 
-    private void generarListaMarca()  throws ClassNotFoundException{
-        super.generarJLabel(this.textoMarca, "Marca:", 50, 350, 150, 30);
-        this.campoMarca = super.generarListaDesplegable(MarcaController.getIDMarcas(), 200, 350, 250, 30);
-        this.add(this.campoMarca);
-
+    private void generarListaMarca() {
+        super.generarJLabel(this.textoMarca, "Marca:", 50, 350, 100, 30);
+        campoMarca = new JComboBox<>();
+        for (Marca marca : marcas) {
+            campoMarca.addItem(marca);
+        }
+        campoMarca.setBounds(200, 350, 250, 30);
+        this.add(campoMarca);
     }
 
-    private void generarListaCategoria() throws ClassNotFoundException {
-        super.generarJLabel(this.textoCategoria, "Categoria:", 50, 400, 150, 30);
-        this.campoCategoria = super.generarListaDesplegable(CategoriaController.getIDCategorias(), 200, 400, 250, 30);
-        this.add(this.campoCategoria);
+    private void generarListaCategoria() {
+        super.generarJLabel(this.textoCategoria, "Categoría:", 50, 400, 100, 30);
+        campoCategoria = new JComboBox<>();
+        for (Categoria categoria : categorias) {
+            campoCategoria.addItem(categoria);
+        }
+        campoCategoria.setBounds(200, 400, 250, 30);
+        this.add(campoCategoria);
     }
 
     private void generarBotonRegistrar() {
@@ -98,53 +113,37 @@ public class VentanaRegistrarProducto extends Ventana {
         this.add(botonCancelar);
     }
 
-    private boolean registrarProducto() throws ClassNotFoundException, IllegalArgumentException {
-        if (campoID.getText().isEmpty() || campoNombre.getText().isEmpty() || campoPrecio.getText().isEmpty() || campoStock.getText().isEmpty()) {
-            throw new IllegalArgumentException("Todos los campos deben estar llenos.");
-        }
-        int id = Integer.parseInt(campoID.getText());
-        String nombre = campoNombre.getText();
-        double precio = Double.parseDouble(campoPrecio.getText());
-        int stock = Integer.parseInt(campoStock.getText());
-        Marca marca = (Marca) campoMarca.getSelectedItem();
-        Categoria categoria = (Categoria) campoCategoria.getSelectedItem();
+    private boolean registrarProducto() throws ClassNotFoundException {
+        if (this.campoNombre.getText().length() == 0 || this.campoPrecio.getText().length() == 0 || this.campoStock.getText().length() == 0) {
+            return false;
+        } else {
+            Marca marcaSeleccionada = (Marca) campoMarca.getSelectedItem();
+            Categoria categoriaSeleccionada = (Categoria) campoCategoria.getSelectedItem();
 
-        // int id, String nombre, Marca marca, Categoria categoria, double precio, int stock
-        return ProductoController.registrarProducto(id, nombre, marca, categoria, precio, stock);
+            Producto producto = new Producto(this.campoNombre.getText(), Double.parseDouble(this.campoPrecio.getText()), Integer.parseInt(this.campoStock.getText()), marcaSeleccionada.getIdMarca(), categoriaSeleccionada.getIdCategoria());
+            // Asumiendo que tienes un método en algún controlador para registrar el producto
+            // ProductoController.registrarProducto(producto);
+            return true;
+        }
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == botonRegistrar) {
+        if (e.getSource() == this.botonRegistrar) {
             try {
                 if (registrarProducto()) {
                     JOptionPane.showMessageDialog(this, "Producto registrado correctamente");
                     VentanaBienvenida ventanaBienvenida = new VentanaBienvenida();
                     this.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(this, "Producto ya ingresado o datos incorrectos");
-                    limpiarCampos();
+                    JOptionPane.showMessageDialog(this, "Ingrese datos válidos");
                 }
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Formato de número incorrecto: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                limpiarCampos();
-            } catch (ClassNotFoundException | IllegalArgumentException ex) {
-                JOptionPane.showMessageDialog(this, "Error al registrar el producto: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                limpiarCampos();
+            } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
-        } else if (e.getSource() == botonCancelar) {
+        }
+        if (e.getSource() == this.botonCancelar) {
             VentanaBienvenida ventanaBienvenida = new VentanaBienvenida();
             this.dispose();
         }
-    }
-
-    private void limpiarCampos() {
-        campoID.setText("");
-        campoNombre.setText("");
-        campoPrecio.setText("");
-        campoStock.setText("");
-        campoMarca.setSelectedIndex(0);
-        campoCategoria.setSelectedIndex(0);
     }
 }
