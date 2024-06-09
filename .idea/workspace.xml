@@ -4,20 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45a60075-465d-477a-8250-013d4ceb5267" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="45a60075-465d-477a-8250-013d4ceb5267" name="Changes" comment="creacion de packages">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CategoriaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/MarcaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ProductoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/RoundedButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/Ventana.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaBienvenida.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaBuscarProducto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaEliminarProducto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaModificarProducto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaRegistrarCategoria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaRegistrarMarca.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaRegistrarProducto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaTabla.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Categoria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Marca.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Producto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/data/DBConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/data/DBGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/data/dao/CategoriaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/data/dao/MarcaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/data/dao/ProductoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/principal/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NichoUlloa&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NichoUlloa/ProyectoLabProgra2.git&quot;,
+    &quot;accountId&quot;: &quot;ad657d07-59ed-4433-8124-f604de13a408&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2hYYgHCOypTEto97063YSZWMzgF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -28,14 +75,107 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Principal.executor": "Run",
+    "Application.VentanaBienvenida.executor": "Run",
+    "Application.VentanaBuscarProducto.executor": "Run",
+    "Application.VentanaEliminarProducto.executor": "Run",
+    "Application.VentanaRegistrarMarca.executor": "Run",
+    "Application.VentanaRegistrarProducto.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "NicoUlloa",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/Nicho/IdeaProjects/ProyectoLabProgra2/src/main/java/com/gestion/Main.java",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="gui" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Principal">
+    <configuration name="Principal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="principal.Principal" />
+      <module name="ProyectoLabProgra2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="principal.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VentanaBienvenida" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.VentanaBienvenida" />
+      <module name="ProyectoLabProgra2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VentanaEliminarProducto" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.VentanaEliminarProducto" />
+      <module name="ProyectoLabProgra2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VentanaRegistrarMarca" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.VentanaRegistrarMarca" />
+      <module name="ProyectoLabProgra2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VentanaRegistrarProducto" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.VentanaRegistrarProducto" />
+      <module name="ProyectoLabProgra2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Principal" />
+        <item itemvalue="Application.VentanaRegistrarMarca" />
+        <item itemvalue="Application.VentanaRegistrarProducto" />
+        <item itemvalue="Application.VentanaBienvenida" />
+        <item itemvalue="Application.VentanaEliminarProducto" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -52,12 +192,39 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1717772590637</updated>
-      <workItem from="1717772591794" duration="6000" />
+      <workItem from="1717772591794" duration="545000" />
+      <workItem from="1717773471730" duration="2222000" />
+      <workItem from="1717779771542" duration="3380000" />
+      <workItem from="1717783717561" duration="1135000" />
+      <workItem from="1717854942116" duration="13699000" />
     </task>
+    <task id="LOCAL-00001" summary="Primer commit, README.md">
+      <option name="closed" value="true" />
+      <created>1717772813754</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717772813754</updated>
+    </task>
+    <task id="LOCAL-00002" summary="creacion de packages">
+      <option name="closed" value="true" />
+      <created>1717772854263</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717772854263</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Primer commit, README.md" />
+    <MESSAGE value="creacion de packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="creacion de packages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
