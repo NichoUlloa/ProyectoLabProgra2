@@ -1,16 +1,13 @@
 package model.data.dao;
 
-import model.Producto;
-import model.Marca;
 import model.Categoria;
+import model.Marca;
+import model.Producto;
 import org.jooq.DSLContext;
 import org.jooq.Field;
 import org.jooq.Result;
 import org.jooq.Table;
 import org.jooq.impl.DSL;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.jooq.impl.DSL.name;
 import static org.jooq.impl.DSL.table;

@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45a60075-465d-477a-8250-013d4ceb5267" name="Changes" comment="creacion de packages">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CategoriaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CategoriaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MarcaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MarcaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProductoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/VentanaRegistrarCategoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaRegistrarCategoria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/VentanaRegistrarMarca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaRegistrarMarca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/VentanaRegistrarProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/VentanaRegistrarProducto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Categoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Marca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Marca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/data/DBGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/data/DBGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/data/dao/CategoriaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/data/dao/CategoriaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/data/dao/MarcaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/data/dao/MarcaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/data/dao/ProductoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/data/dao/ProductoDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +191,7 @@
       <workItem from="1717854942116" duration="13699000" />
       <workItem from="1717896017786" duration="5258000" />
       <workItem from="1717909877676" duration="20000" />
-      <workItem from="1717963198161" duration="674000" />
+      <workItem from="1717963198161" duration="4155000" />
     </task>
     <task id="LOCAL-00001" summary="Primer commit, README.md">
       <option name="closed" value="true" />
@@ -214,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717963438329</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="creacion de packages">
+      <option name="closed" value="true" />
+      <created>1717963944137</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717963944137</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

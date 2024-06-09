@@ -1,8 +1,8 @@
 package controller;
 
-import model.Producto;
-import model.Marca;
 import model.Categoria;
+import model.Marca;
+import model.Producto;
 import model.data.DBConnector;
 import model.data.DBGenerator;
 import model.data.dao.ProductoDAO;

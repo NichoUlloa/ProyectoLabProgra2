@@ -1,8 +1,8 @@
 package gui;
 
 import controller.ProductoController;
-import controller.MarcaController;
 import controller.CategoriaController;
+import controller.MarcaController;
 import model.Categoria;
 import model.Marca;
 

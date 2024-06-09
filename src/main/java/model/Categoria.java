@@ -1,40 +1,37 @@
 package model;
 
 public class Categoria {
-    // atributos: nombreCategoria, idCategoria
-    private String nombreCategoria;
     private int idCategoria;
+    private String nombreCategoria;
 
-    // constructores
     public Categoria() {
     }
 
-    public Categoria(String nombreCategoria, int idCategoria) {
-        this.nombreCategoria = nombreCategoria;
-        this.idCategoria = idCategoria;
-    }
-
-    // getters y setters
-    public String getNombreCategoria() {
-        return nombreCategoria;
-    }
-    public void setNombreCategoria(String nombreCategoria) {
+    public Categoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
     }
 
     public int getIdCategoria() {
         return idCategoria;
     }
+
     public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
     }
 
-    // toString
+    public String getNombreCategoria() {
+        return nombreCategoria;
+    }
+
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
+    }
+
     @Override
     public String toString() {
         return "Categoria{" +
-                "nombreCategoria='" + nombreCategoria + '\'' +
-                ", idCategoria=" + idCategoria +
+                "idCategoria=" + idCategoria +
+                ", nombreCategoria='" + nombreCategoria + '\'' +
                 '}';
     }
 }

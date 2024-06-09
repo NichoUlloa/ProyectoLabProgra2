@@ -5,14 +5,14 @@ import model.data.DBConnector;
 import model.data.DBGenerator;
 import model.data.dao.MarcaDAO;
 import org.jooq.DSLContext;
+
 public class MarcaController {
     private static final String nombreDataBase = "GestionInventarioDB";
-    // los atribos de nuestra clase marca son nombreMarca, idMarca
-    // metodo registrarMarca validando su existencia
-    public static boolean registrarMarca(String nombreMarca, int idMarca) throws ClassNotFoundException {
+
+    public static boolean registrarMarca(String nombreMarca) throws ClassNotFoundException {
         DSLContext query = DBGenerator.conectarBD(nombreDataBase);
-        if (!MarcaDAO.validarExistenciaMarca(query, "idMarca", idMarca)) {
-            Marca marca = new Marca(nombreMarca, idMarca);
+        if (!MarcaDAO.validarExistenciaMarca(query, nombreMarca)) {
+            Marca marca = new Marca(nombreMarca);
             MarcaDAO.registrarMarca(query, marca);
             DBConnector.closeConnection();
             return true;
@@ -28,12 +28,4 @@ public class MarcaController {
         DBConnector.closeConnection();
         return marcas;
     }
-
-    public static boolean existeMarca(int id) throws ClassNotFoundException {
-        DSLContext query = DBGenerator.conectarBD(nombreDataBase);
-        boolean existe = MarcaDAO.validarExistenciaMarca(query, "idMarca", id);
-        DBConnector.closeConnection();
-        return existe;
-    }
-
 }
