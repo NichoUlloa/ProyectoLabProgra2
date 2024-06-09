@@ -4,12 +4,13 @@ import controller.MarcaController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-public class VentanaRegistrarMarca extends Ventana{
+
+public class VentanaRegistrarMarca extends Ventana {
     public static void main(String[] args) {
         VentanaRegistrarMarca ventana = new VentanaRegistrarMarca();
     }
 
-    // componentes de la ventana atributos: nombreMarca, idMarca
+    // Componentes de la ventana: nombreMarca, idMarca
     private JLabel textoMenu, textoNombreMarca, textoIDMarca;
     private JTextField campoNombreMarca, campoIDMarca;
     private JButton botonRegistrar, botonCancelar;
@@ -21,110 +22,94 @@ public class VentanaRegistrarMarca extends Ventana{
 
     private void generarElementosVentana() {
         generarMensajeMenu();
-        generarBotonRegistrar();
-        generarBotonCancelar();
         generarCampoNombreMarca();
         generarCampoIDMarca();
+        generarBotonRegistrar();
+        generarBotonCancelar();
     }
 
     private void generarMensajeMenu() {
         String textoBienvenida = "Registrar Marca";
-        super.generarJLabelEncabezado(textoMenu, textoBienvenida, 200, 50);
+        super.generarJLabelEncabezado(textoMenu, textoBienvenida, 300, 50);
+    }
+
+    private void generarCampoNombreMarca() {
+        String textoNombreMarca = "Nombre:";
+        super.generarJLabel(this.textoNombreMarca, textoNombreMarca, 50, 150, 150, 30);
+        campoNombreMarca = super.generarJTextField(200, 150, 250, 30);
+        this.add(campoNombreMarca);
+    }
+
+    private void generarCampoIDMarca() {
+        String textoIDMarca = "ID:";
+        super.generarJLabel(this.textoIDMarca, textoIDMarca, 50, 200, 150, 30);
+        campoIDMarca = super.generarJTextField(200, 200, 250, 30);
+        this.add(campoIDMarca);
     }
 
     private void generarBotonRegistrar() {
         String textoBoton = "Registrar Marca";
-        botonRegistrar = super.generarBoton(textoBoton, 55, 400, 170, 20);
+        botonRegistrar = super.generarBoton(textoBoton, 75, 300, 150, 40);
         botonRegistrar.addActionListener(this);
         this.add(botonRegistrar);
     }
 
     private void generarBotonCancelar() {
         String textoBotonCancelar = "Cancelar";
-        botonCancelar = super.generarBoton(textoBotonCancelar, 275, 400, 170, 20);
+        botonCancelar = super.generarBoton(textoBotonCancelar, 275, 300, 150, 40);
         botonCancelar.addActionListener(this);
         this.add(botonCancelar);
     }
 
-    private void generarCampoNombreMarca() {
-        String textoNombreMarca = "Nombre:";
-        super.generarJLabel(this.textoNombreMarca, textoNombreMarca, 20, 50, 150, 20);
-        campoNombreMarca = super.generarJTextField(200, 50, 250, 20);
-        this.add(campoNombreMarca);
-    }
-
-    private void generarCampoIDMarca() {
-        String textoIDMarca = "ID:";
-        super.generarJLabel(this.textoIDMarca, textoIDMarca, 20, 100, 150, 20);
-        campoIDMarca = super.generarJTextField(200, 100, 250, 20);
-        this.add(campoIDMarca);
-    }
-
     // Método registrarMarca validando su existencia
-    private boolean registrarMarca() throws ClassNotFoundException {
-        if(this.campoIDMarca.getText().length()==0 || this.campoNombreMarca.getText().length()==0){
-            return false;
+    private boolean registrarMarca() throws ClassNotFoundException, IllegalArgumentException {
+        String nombre = campoNombreMarca.getText();
+        if (nombre.isEmpty() || campoIDMarca.getText().isEmpty()) {
+            throw new IllegalArgumentException("Todos los campos deben estar llenos.");
         }
-        else{
-            return MarcaController.registrarMarca(this.campoNombreMarca.getText(), Integer.parseInt(this.campoIDMarca.getText()));
+
+        try {
+            int id = Integer.parseInt(campoIDMarca.getText());
+            if (MarcaController.registrarMarca(nombre, id)) {
+                JOptionPane.showMessageDialog(this, "Marca registrada correctamente");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(this, "La marca ya existe o los datos son incorrectos");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("El ID debe ser un número entero.");
         }
     }
 
+    // Override del método actionPerformed
+    @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.botonRegistrar) {
+        if (e.getSource() == botonRegistrar) {
             try {
-                if(registrarMarca()) {
-                    JOptionPane.showMessageDialog(this,"Marca registrada correctamente");
+                if (registrarMarca()) {
                     VentanaBienvenida ventanaBienvenida = new VentanaBienvenida();
                     this.dispose();
+                } else {
+                    limpiarCampos();
                 }
-                else{
-                    JOptionPane.showMessageDialog(this,"Marca ya ingresada o datos incorrectos");
-                }
-            } catch (ClassNotFoundException ex) {
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Formato de número incorrecto: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                limpiarCampos();
+            } catch (ClassNotFoundException | IllegalArgumentException ex) {
+                JOptionPane.showMessageDialog(this, "Error al registrar la marca: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                limpiarCampos();
                 ex.printStackTrace();
             }
         }
-        if (e.getSource() == this.botonCancelar){
+        if (e.getSource() == botonCancelar) {
             VentanaBienvenida ventanaBienvenida = new VentanaBienvenida();
             this.dispose();
         }
-
     }
 
+    private void limpiarCampos() {
+        campoNombreMarca.setText("");
+        campoIDMarca.setText("");
+    }
 }
-
-// EJEMPLO
-//  private boolean registrarCarrera() throws ClassNotFoundException {
-//        if(this.campoCodigoCarrera.getText().length()==0 || this.campoNombre.getText().length()==0 || this.campoSemestres.getText().length()==0){
-//            return false;
-//        }
-//        else{
-//            return CarreraController.añadirCarrera(this.campoNombre.getText(),this.campoCodigoCarrera.getText(),Integer.parseInt(this.campoSemestres.getText()));
-//
-//        }
-//    }
-//
-//
-//    public void actionPerformed(ActionEvent e) {
-//        if (e.getSource() == this.botonRegistrar) {
-//            try {
-//                if(registrarCarrera()) {
-//                    JOptionPane.showMessageDialog(this,"Carrera registrada correctamente");
-//                    VentanaBienvenida ventanaBienvenida = new VentanaBienvenida();
-//                    this.dispose();
-//                }
-//                else{
-//                    JOptionPane.showMessageDialog(this,"Carrera ya ingresada o datos incorrectos");
-//                }
-//            } catch (ClassNotFoundException ex) {
-//                ex.printStackTrace();
-//            }
-//        }
-//        if (e.getSource() == this.botonCancelar){
-//            VentanaBienvenida ventanaBienvenida = new VentanaBienvenida();
-//            this.dispose();
-//        }
-//
-//    }
-
